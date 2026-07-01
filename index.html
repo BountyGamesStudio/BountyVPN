@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BountyVPN</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 24px;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+        }
+        h1 { font-size: 28px; margin-bottom: 8px; }
+        .subtitle { color: #a0a0c0; margin-bottom: 32px; }
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .stat {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 16px;
+        }
+        .stat-value { font-size: 20px; font-weight: 700; color: #667eea; }
+        .stat-label { font-size: 12px; color: #a0a0c0; margin-top: 4px; }
+        .servers {
+            text-align: left;
+            margin-bottom: 24px;
+        }
+        .servers h3 { font-size: 14px; color: #a0a0c0; margin-bottom: 12px; text-transform: uppercase; }
+        .server {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            margin-bottom: 8px;
+        }
+        .server-flag { font-size: 24px; }
+        .server-name { font-weight: 600; }
+        .server-type { font-size: 12px; color: #a0a0c0; margin-left: auto; }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4); }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+        }
+        .link-box {
+            display: flex;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .link-box input {
+            flex: 1;
+            padding: 12px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 12px;
+        }
+        .link-box button {
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .footer { color: #707090; font-size: 12px; margin-top: 24px; }
+        .footer a { color: #667eea; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🛡️</div>
+        <h1>BountyVPN</h1>
+        <p class="subtitle">Быстрый и безопасный VPN</p>
+
+        <div class="card">
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">500 ГБ</div>
+                    <div class="stat-label">Трафик</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">01.07.2026</div>
+                    <div class="stat-label">Действует до</div>
+                </div>
+            </div>
+
+            <div class="servers">
+                <h3>Сервера</h3>
+                <div class="server">
+                    <span class="server-flag">🇩🇪</span>
+                    <span class="server-name">Германия</span>
+                    <span class="server-type">VLESS / TCP / REALITY</span>
+                </div>
+                <div class="server">
+                    <span class="server-flag">🇷🇺</span>
+                    <span class="server-name">Россия · YT без рекламы</span>
+                    <span class="server-type">VLESS / TCP / REALITY</span>
+                </div>
+            </div>
+
+            <a class="btn" href="happ://add-subscription?url=https://USERNAME.github.io/BountyVPN/subscription.txt">Добавить в HAPP</a>
+            <a class="btn btn-secondary" href="subscription.txt">Скачать подписку</a>
+
+            <div class="link-box">
+                <input type="text" id="subLink" value="https://USERNAME.github.io/BountyVPN/subscription.txt" readonly>
+                <button onclick="copyLink()">Копировать</button>
+            </div>
+        </div>
+
+        <p class="footer">Канал: <a href="https://t.me/BountyGames" target="_blank">@BountyGames</a></p>
+    </div>
+
+    <script>
+        function copyLink() {
+            const input = document.getElementById('subLink');
+            input.select();
+            navigator.clipboard.writeText(input.value);
+            alert('Ссылка скопирована!');
+        }
+    </script>
+</body>
+</html>
